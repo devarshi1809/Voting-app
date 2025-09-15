@@ -16,6 +16,8 @@ function updateVotes(){
 function vote(language){
   if(Object.prototype.hasOwnProperty.call(votes,language)){
     votes[language]++;
+    console.log("You voted:", language, "→", votes[language], "total");
+    console.debug("Current tallies:", JSON.parse(JSON.stringify(votes)));
     updateVotes();
   }
 }
@@ -31,6 +33,7 @@ function simulateRealtime(){
   const langs=["JavaScript","Python","Java"];
   const randomLang=langs[Math.floor(Math.random()*langs.length)];
   votes[randomLang]++;
+  console.log("Simulated vote:", randomLang, "→", votes[randomLang], "total");
   updateVotes();
 }
 
@@ -39,5 +42,6 @@ setInterval(simulateRealtime,2000);
 
 window.vote=vote;
 })();
+
 
 
